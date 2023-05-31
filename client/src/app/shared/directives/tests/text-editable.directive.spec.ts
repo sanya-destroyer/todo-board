@@ -1,0 +1,3 @@
+// describe('Text editable directive', () => {
+//
+// })

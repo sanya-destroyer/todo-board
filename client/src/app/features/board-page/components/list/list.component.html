@@ -1,0 +1,62 @@
+<app-task-modal
+  (closeModalEvent)="closeModal()"
+  *ngIf="list && isAddTask"
+  [boardId]="list.boardId"
+  [listId]="list._id"
+></app-task-modal>
+
+<div
+  *ngIf="list"
+  class="list"
+>
+
+  <div class="list__head">
+    <div class="list__title">
+      {{list.name}}
+    </div>
+
+    <input
+      (change)="changeListColor($event)"
+      [value]="list.color || '#D9D9D9'"
+      class="list__color"
+      type="color"
+    >
+  </div>
+
+  <div
+    #$list
+    [ngStyle]="{ background: list.color || '#D9D9D9'}"
+    class="list__container"
+  >
+
+    <button (click)="openModal()"
+            class="list__button"
+    >
+      +
+    </button>
+
+    <div
+      *ngIf="tasks$
+                | async
+                | filterName: controlsBarService.filterWord
+                | sort: controlsBarService.sortBy : controlsBarService.sortType
+                as tasks
+          "
+      class="list__tasks"
+    >
+      <app-task
+        *ngFor="let task of tasks"
+        [isDoneList]="list.name === ListType.DONE"
+        [task]="task"
+      >
+      </app-task>
+
+      <div
+        *ngIf="!subscription.closed"
+        class="list__ghost"
+      >
+      </div>
+
+    </div>
+  </div>
+</div>

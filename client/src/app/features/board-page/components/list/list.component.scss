@@ -1,0 +1,43 @@
+
+.list__button {
+  display: block;
+  width: 100%;
+  font-size: 1.6em;
+  text-align: center;
+  line-height: 175%;
+
+  background: #BEB3B3;
+
+  margin: 0 0 12px 0;
+}
+
+.list__head {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 25px;
+}
+
+.list__color {
+  -webkit-appearance: none;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: none;
+  }
+}
+
+
+.list__ghost {
+  width: 100%;
+  height: 56px;
+  background: #c7c7c7;
+}

@@ -1,0 +1,69 @@
+<div
+  (mousedown)="closeModal()"
+  class="screen"
+>
+  <div
+    (mousedown)="modalClick($event)"
+    class="modal"
+  >
+    <h2
+      class="comments__title"
+    >
+      Comments
+    </h2>
+
+    <div class="comments">
+
+      <form
+        (submit)="submitForm()"
+        [formGroup]="commentForm"
+        class="comments__form"
+      >
+        <fieldset
+          class="comments__fieldset"
+        >
+          <input
+            class="comments__input"
+            formControlName="content"
+            type="text"
+          >
+
+          <button
+            [disabled]="!commentForm.valid"
+            class="comments__button"
+            type="submit"
+          >
+            Ok
+          </button>
+
+        </fieldset>
+
+        <fieldset
+          class="comments__fieldset"
+        >
+          <p
+            *ngIf="contentError && contentError['maxlength']"
+            class="comments__error"
+          >
+            Comment should be less that 25 symbols
+          </p>
+        </fieldset>
+      </form>
+
+      <div
+        *ngIf="comments$
+               | async as comments"
+        class="comments__container"
+      >
+        <app-comment
+          *ngFor="let comment of comments"
+          [comment]="comment"
+        >
+
+        </app-comment>
+
+      </div>
+
+    </div>
+  </div>
+</div>

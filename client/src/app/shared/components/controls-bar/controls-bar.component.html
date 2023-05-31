@@ -1,0 +1,72 @@
+<div class="controls">
+  <h2 class="controls__title">{{title}}</h2>
+
+  <div class="controls__filter">
+    <input
+      (input)="submitFilterChanges()"
+      [(ngModel)]="filterWord"
+      placeholder="Filter"
+      type="text"
+    >
+  </div>
+
+
+  <div
+    *ngIf="addFilterType"
+    class="controls__dropdown">
+    <select
+      (change)="submitFilterByChanges()"
+      [(ngModel)]="filterBy"
+      class="controls__select"
+      name="filter"
+    >
+      <option class="controls__option" selected value="name">Filter by board name</option>
+      <option class="controls__option" value="description">Filter by board description</option>
+      <option class="controls__option" value="tasks">Filter by task name</option>
+    </select>
+  </div>
+
+  <div class="controls__dropdown">
+    <select
+      (change)="submitSortByChanges()"
+      [(ngModel)]="sortBy"
+      class="controls__select"
+      name="sort"
+    >
+      <option class="controls__option" selected value="name">Sort By Name</option>
+      <option class="controls__option" value="createdAt">Sort By Date</option>
+    </select>
+  </div>
+
+  <div class="controls__sort">
+    <label
+      class="controls__button"
+      for="ASC"
+    >
+      ASC
+    </label>
+    <input
+      (change)="submitSortTypeChanges()"
+      [(ngModel)]="sortType"
+      id="ASC"
+      name="sortType"
+      type="radio"
+      value="ASC"
+    >
+    <label
+      class="controls__button"
+      for="DESC"
+    >
+      DESC
+    </label>
+    <input
+      (change)="submitSortTypeChanges()"
+      [(ngModel)]="sortType"
+      id="DESC"
+      name="sortType"
+      type="radio"
+      value="DESC"
+    >
+
+  </div>
+</div>

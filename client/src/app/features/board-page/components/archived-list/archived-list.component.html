@@ -1,0 +1,32 @@
+<div
+  *ngIf="tasksLength | async"
+  class="list"
+>
+  <div class="list__head">
+    <div class="list__title">
+      Archived
+    </div>
+
+  </div>
+
+  <div
+    *ngIf="tasks$
+        | async
+        | filterName: controlsBarService.filterWord
+        | sort: controlsBarService.sortBy : controlsBarService.sortType
+        as tasks
+    "
+    class="list__container"
+  >
+    <div
+      class="list__tasks"
+    >
+      <app-task
+        *ngFor="let task of  tasks"
+        [task]="task"
+      >
+
+      </app-task>
+    </div>
+  </div>
+</div>

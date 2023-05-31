@@ -1,0 +1,52 @@
+<app-task-comments
+  (closeModalEvent)="closeModal()"
+  *ngIf="isModal && task"
+  [boardId]="this.task.boardId"
+  [taskId]="this.task._id"
+>
+
+</app-task-comments>
+
+
+<div
+  #draggable
+  *ngIf="task"
+  class="task"
+  draggable="false"
+>
+  <div
+    #name
+    (commitChangesEvent)="changeTaskName($event)" [maxLength]="18"
+    appTextEditable
+    class="task__name"
+  >
+    {{task.name}}
+  </div>
+
+  <div class="task__controls">
+    <button class="task__icon">
+      <span></span>
+    </button>
+    <div class="task__buttons">
+      <button (click)="deleteTask()"
+              class="task__button"
+      >
+        Delete
+      </button>
+
+      <button (click)="showModal()"
+              class="task__button"
+      >
+        Comments
+      </button>
+
+      <button
+        (click)="archiveTask()"
+        *ngIf="isDoneList"
+        class="task__button"
+      >
+        Archive
+      </button>
+    </div>
+  </div>
+</div>

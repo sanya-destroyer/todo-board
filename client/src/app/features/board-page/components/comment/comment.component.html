@@ -1,0 +1,21 @@
+<div
+  *ngIf="comment"
+  class="comment"
+>
+  <div
+    (commitChangesEvent)="changeComment($event)"
+    [maxLength]="25"
+    appTextEditable
+    class="comment__content"
+  >
+    {{comment.content}}
+  </div>
+  <div>
+    <button
+      (click)="removeComment()"
+      class="comment__delete"
+    >
+      x
+    </button>
+  </div>
+</div>
